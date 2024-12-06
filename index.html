@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Themed Start Screen</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Press Start 2P', cursive;
+            background: url('https://media.giphy.com/media/pVGsAWjzvXcZW4ZBTE/giphy.gif') no-repeat center center fixed; /* Background GIF */
+            background-size: cover; /* Cover the entire area */
+            color: #ffffff;
+            overflow: hidden;
+            height: 100vh;
+        }
+        #startScreen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(30, 30, 30, 0.8); /* Semi-transparent background */
+            z-index: 9999;
+        }
+        #startButton {
+            padding: 15px 30px;
+            font-size: 24px;
+            color: #ffffff;
+            background-color: #782186; /* Yellow */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #startButton:hover {
+            background-color: #2f7ddc; /* blue*/
+        }
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 30, 30, 0.9);
+            display: none; /* Hide loading screen  */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9998; /* below the start screen */
+        }
+        .spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #ffcc00;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+     <!--
+        display for welcoming user to the website
+        and a display for loading screen when the users click the embark journey button
+    -->
+    <div id="startScreen">
+        <h1>welcome to klysite</h1>
+        <button id="startButton">Embark Journey!</button>
+    </div>
+       
+    <div id="loadingScreen">
+        <div class="spinner"></div>
+        <div id="game-title">Traveling...</div>
+         <img id="controller" src="https://i.gifer.com/47tj.gif" alt="Game Controller" style="width: 400px;">
+    </div>
+    </div>
+
+    <script>
+        document.getElementById('startButton').addEventListener('click', function() {
+            // display loading screen output and its display settings
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('loadingScreen').style.display = 'flex';
+
+            // loading output
+            setTimeout(function() {
+                // Redirect to the main page
+                window.location.href = 'Page1.html'; // href to the main page 
+            }, 4000); //(4 second cooldown for the spinner)
+        });
+    </script>
+</body>
+</html>
